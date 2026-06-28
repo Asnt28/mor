@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Feliz Aniversario Precioso</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a2a 0%, #1a0a3a 50%, #0a0a2a 100%);
+            font-family: 'Poppins', sans-serif;
+            color: #00ffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Efecto de rayos de flujo temporal */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(0, 255, 255, 0.03) 0px, rgba(0, 255, 255, 0.03) 2px, transparent 2px, transparent 8px),
+                radial-gradient(ellipse at 20% 30%, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            animation: flujoLuz 3s infinite alternate;
+        }
+
+        @keyframes flujoLuz {
+            0% { opacity: 0.5; background-position: 0% 0%; }
+            100% { opacity: 1; background-position: 100% 100%; }
+        }
+
+        /* Efecto de líneas de velocidad */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(0, 255, 255, 0.05) 50%, 
+                transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+            animation: velocidad 0.5s linear infinite;
+        }
+
+        @keyframes velocidad {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .floating-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 8px 15px;
+            border-radius: 50px;
+            border: 1px solid #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        .music-btn {
+            background: linear-gradient(135deg, #ff00ff, #00ffff);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 40px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.75rem;
+            transition: transform 0.2s;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #00ffff;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        @media (min-width: 1200px) {
+            .container { padding: 1.5rem 2rem 3rem; }
+        }
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .container { padding: 1.2rem 1.5rem 2rem; }
+        }
+        @media (max-width: 767px) {
+            .container { padding: 0.8rem; }
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 50px;
+            padding: 1.5rem 1rem;
+            border: 2px solid #00ffff;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .titulo-principal {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            background: linear-gradient(135deg, #00ffff, #ff00ff, #00ffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        @media (min-width: 1200px) {
+            .titulo-principal { font-size: 2.5rem; }
+        }
+        @media (max-width: 767px) {
+            .titulo-principal { font-size: 1.4rem; }
+        }
+
+        .dedicatoria {
+            font-size: 1rem;
+            margin: 0.5rem 0;
+            font-family: 'Orbitron', monospace;
+            color: #ff00ff;
+        }
+
+        .deLorean {
+            font-size: 4rem;
+            cursor: pointer;
+            animation: latido 1.2s infinite ease;
+            display: inline-block;
+            filter: drop-shadow(0 0 10px #00ffff);
+        }
+
+        @keyframes latido {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 5px #00ffff; }
+            50% { transform: scale(1.1); text-shadow: 0 0 25px #00ffff; }
+        }
+
+        .instruccion {
+            font-size: 0.7rem;
+            opacity: 0.8;
+            margin-top: 8px;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .contador {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 40px;
+            padding: 0.8rem;
+            text-align: center;
+            margin: 1.5rem 0;
+            border: 1px solid #ff00ff;
+        }
+
+        .tiempo {
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @media (min-width: 1200px) {
+            .tiempo { font-size: 1.3rem; }
+        }
+
+        .seccion {
+            margin: 2rem 0;
+        }
+
+        .seccion h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            font-family: 'Orbitron', monospace;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 1200px) {
+            .seccion h2 { font-size: 1.8rem; }
+        }
+        @media (max-width: 767px) {
+            .seccion h2 { font-size: 1.2rem; }
+        }
+
+        /* COLLAGE RESPONSIVE */
+        .collage {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            grid-auto-flow: dense;
+        }
+
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .collage { grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+        }
+        @media (max-width: 767px) {
+            .collage { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+        }
+
+        .collage-item { cursor: pointer; }
+        .collage-item.muy-grande { grid-column: span 3; grid-row: span 2; }
+        .collage-item.grande { grid-column: span 2; grid-row: span 2; }
+        .collage-item.horizontal { grid-column: span 2; }
+        .collage-item.vertical { grid-row: span 2; }
+
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .collage-item.muy-grande { grid-column: span 2; }
+            .collage-item.grande { grid-column: span 2; }
+        }
+        @media (max-width: 767px) {
+            .collage-item.muy-grande, .collage-item.grande, .collage-item.horizontal, .collage-item.importante {
+                grid-column: span 2; grid-row: span 1;
+            }
+            .collage-item.vertical { grid-row: span 1; }
+        }
+
+        .collage-item.importante {
+            grid-column: span 2;
+            grid-row: span 2;
+            position: relative;
+            animation: brilloEspecial 1.5s ease-in-out infinite;
+        }
+        @media (max-width: 767px) {
+            .collage-item.importante { grid-column: span 2; grid-row: span 1; }
+        }
+
+        .collage-item.importante .flip-card-front,
+        .collage-item.importante .flip-card-back {
+            border: 3px solid #ff00ff;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
+        }
+
+        @keyframes brilloEspecial {
+            0% { filter: drop-shadow(0 0 5px #ff00ff); }
+            50% { filter: drop-shadow(0 0 30px #ff00ff); }
+            100% { filter: drop-shadow(0 0 5px #ff00ff); }
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 100%;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: 16px;
+        }
+
+        .collage-item.muy-grande .flip-card-inner,
+        .collage-item.grande .flip-card-inner,
+        .collage-item.importante .flip-card-inner { padding-bottom: 60%; }
+        .collage-item.horizontal .flip-card-inner { padding-bottom: 50%; }
+        .collage-item.vertical .flip-card-inner { padding-bottom: 110%; }
+
+        .flip-card.volteado .flip-card-inner { transform: rotateY(180deg); }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border: 2px solid #00ffff;
+        }
+
+        .flip-card-front {
+            background-color: #0a0a2a;
+            overflow: hidden;
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .flip-card:hover .flip-card-front img { transform: scale(1.05); }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #1a0a3a, #0a0a2a);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0.8rem;
+            text-align: center;
+            color: #00ffff;
+            gap: 0.4rem;
+            overflow-y: auto;
+        }
+
+        .flip-card-back .mensaje-texto {
+            font-family: 'Dancing Script', cursive;
+            font-size: 0.85rem;
+            line-height: 1.3;
+            font-weight: bold;
+            color: #ff00ff;
+        }
+        @media (min-width: 1200px) {
+            .flip-card-back .mensaje-texto { font-size: 1rem; }
+        }
+
+        .flip-card-back .corazon-flip {
+            font-size: 1.5rem;
+            animation: latido 1.5s infinite ease;
+            display: inline-block;
+        }
+
+        .nota-fotos {
+            text-align: center;
+            margin-top: 0.8rem;
+            font-style: italic;
+            font-size: 0.7rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        /* Frase de cierre */
+        .frase-final-especial {
+            text-align: center;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 40px;
+            backdrop-filter: blur(8px);
+            border: 2px solid #00ffff;
+        }
+
+        .frase-final-especial p {
+            font-family: 'Orbitron', monospace;
+            font-size: 1rem;
+            color: #00ffff;
+        }
+        @media (min-width: 1200px) {
+            .frase-final-especial p { font-size: 1.3rem; }
+        }
+
+        .buzon-section, .cofres-section, .juego-section {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 40px;
+            padding: 1rem;
+            backdrop-filter: blur(6px);
+            border: 1px solid #00ffff;
+        }
+        @media (min-width: 1200px) {
+            .buzon-section, .cofres-section, .juego-section { padding: 1.5rem; }
+        }
+
+        .buzon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .buzon {
+            background: radial-gradient(circle at 30% 20%, #1a0a3a, #0a0a2a);
+            width: 150px;
+            padding: 0.8rem;
+            border-radius: 25px;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid #ff00ff;
+        }
+        @media (min-width: 1200px) {
+            .buzon { width: 180px; padding: 1rem; }
+        }
+
+        .cartas-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .carta-item {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 25px;
+            padding: 0.8rem;
+            width: 240px;
+            border: 1px solid #00ffff;
+        }
+        @media (max-width: 767px) {
+            .carta-item { width: 100%; }
+        }
+
+        .cofres-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+            margin: 1.2rem 0;
+        }
+
+        .cofre {
+            background: radial-gradient(circle at 30% 20%, #1a0a3a, #0a0a2a);
+            border-radius: 18px;
+            padding: 0.8rem;
+            text-align: center;
+            border: 2px solid #ff00ff;
+        }
+        .cofre.cerrado { cursor: pointer; }
+        .cofre.cerrado:active { transform: scale(0.98); }
+        .cofre.abierto { opacity: 0.8; }
+
+        .reset-cofres {
+            background: linear-gradient(135deg, #ff00ff, #00ffff);
+            border: none;
+            padding: 6px 20px;
+            border-radius: 40px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .video-destacado { display: flex; justify-content: center; }
+        .video-destacado video { 
+            width: 100%; 
+            max-width: 750px; 
+            border-radius: 30px; 
+            border: 2px solid #00ffff;
+        }
+
+        .juego-info { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-bottom: 15px; 
+            font-size: 1rem; 
+            flex-wrap: wrap;
+            font-family: 'Orbitron', monospace;
+        }
+        .btn-juego { 
+            background: linear-gradient(95deg, #ff00ff, #00ffff); 
+            border: none; 
+            padding: 8px 20px; 
+            border-radius: 40px; 
+            color: #000; 
+            cursor: pointer; 
+            font-weight: bold;
+            font-family: 'Orbitron', monospace;
+        }
+        #gameCanvas { 
+            background: radial-gradient(circle, #0a0a2a, #000); 
+            border-radius: 30px; 
+            display: block; 
+            margin: 0 auto; 
+            width: 100%; 
+            max-width: 700px; 
+            border: 2px solid #00ffff;
+            height: auto;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            opacity: 0.8;
+            font-size: 0.7rem;
+            font-family: 'Orbitron', monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="musicaFondo" loop>
+        <source src="assets/cancion.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="floating-controls">
+        <button id="controlMusica" class="music-btn">⚡ Te dedico esta canción ⚡</button>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <h1 class="titulo-principal">⚡ Feliz Aniversario Baby ⚡</h1>
+            <h1 class="titulo-principal" style="font-size: 1.5rem;">✨ Te amo con toda mi alma ✨</h1>
+            <p class="dedicatoria">"¿Dónde estamos? ¡En el futuro... contigo!" 🚀</p>
+            <div class="deLorean" id="corazonAnimado">🛸⚡🚗</div>
+            <p class="instruccion">¡Toca el DeLorean y viajemos al amor eterno!</p>
+        </div>
+
+        <div class="contador">
+            <h3 style="color:#ff00ff;">⏳ Tiempo  a tu lado ⏳</h3>
+            <div class="tiempo" id="contadorTiempo"></div>
+            <p style="font-size:0.7rem;">"Mi amor por ti es infinito"</p>
+        </div>
+
+        <!-- COLLAGE -->
+        <div class="seccion">
+            <h2>📸 Nuestro álbum del espacio-tiempo</h2>
+            <div class="collage" id="collageGalaxia"></div>
+            <p class="nota-fotos">⚡ Toca cualquier foto, ya empezo lo cursi ⚡</p>
+        </div>
+
+        <!-- BUZÓN -->
+        <div class="seccion buzon-section">
+            <h2>📮 Cartas desde el futuro</h2>
+            <div class="buzon-container">
+                <div class="buzon" id="buzonBtn">
+                    <div class="sobre-corazon" style="font-size:2rem;">⚡💌⚡</div>
+                    <p>📬 Toca para abrir el buzón espacio-temporal</p>
+                </div>
+                <div id="cartasContainer" class="cartas-container" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- VIDEO -->
+        <div class="seccion">
+            <h2>🎬 Tu eres mi Alegria </h2>
+            <div class="video-destacado">
+                <video controls poster="assets/poster.jpg">
+                    <source src="assets/video.mp4" type="video/mp4">
+                    Tu navegador no soporta video.
+                </video>
+            </div>
+        </div>
+
+        <!-- COFRES -->
+        <div class="seccion cofres-section">
+            <h2>🎁 Cofres del Espacio-Tiempo 🎁</h2>
+            <div class="cofres-info" id="cofresInfo">💎 Elige 3 cofres. ¡Premios del futuro! 💎</div>
+            <div class="cofres-grid" id="cofresGrid"></div>
+            <div style="text-align:center;"><button id="resetCofresBtn" class="reset-cofres">🔄 Viajar al pasado (Reiniciar)</button></div>
+            <div id="resultadoCofres" style="text-align:center; margin-top:15px;"></div>
+        </div>
+
+        <!-- JUEGO ATRAPA CORAZONES -->
+        <div class="seccion juego-section">
+            <h2>🎮 ¡Atrapa los corazones del futuro! 🎮</h2>
+            <div class="juego-container">
+                <div class="juego-info">
+                    <div>⚡ Puntos: <span id="puntos">0</span></div>
+                    <div>⏱️ Tiempo: <span id="tiempo">30</span>s</div>
+                    <button id="iniciarJuego" class="btn-juego">✨ ¡Viajar al juego! ✨</button>
+                </div>
+                <canvas id="gameCanvas" width="700" height="400"></canvas>
+                <div id="mensajeFinal" class="mensaje-final"></div>
+            </div>
+        </div>
+
+        <!-- FRASE DE CIERRE -->
+        <div class="frase-final-especial">
+            <p>⚡ "El futuro es lo que hacemos de él... y yo elijo pasar el mío contigo" ⚡</p>
+            <div class="corazoncitos">⚡ 🚗 ❤️ 💕 ⚡</div>
+        </div>
+
+        <footer>
+            <p>Hecho con 1.21 gigawatts de amor para ti, mi viajero favorito 🌹</p>
+            <p>Eres mi destino final en cualquier línea de tiempo ⚡❤️</p>
+        </footer>
+    </div>
+
+    <script>
+        // CONTADOR CORREGIDO (28 de junio de 2021)
+        function actualizarContador() {
+            const fechaInicio = new Date(2021, 5, 28, 0, 0, 0);
+            const ahora = new Date();
+            let diffMs = ahora - fechaInicio;
+            let años = ahora.getFullYear() - fechaInicio.getFullYear();
+            const mesActual = ahora.getMonth();
+            const diaActual = ahora.getDate();
+            const mesInicio = fechaInicio.getMonth();
+            const diaInicio = fechaInicio.getDate();
+            
+            if (mesActual < mesInicio || (mesActual === mesInicio && diaActual < diaInicio)) años--;
+            
+            let meses = mesActual - mesInicio;
+            if (meses < 0) meses += 12;
+            if (diaActual < diaInicio) meses--;
+            if (meses < 0) meses = 11;
+            
+            const diasTotales = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            const horasTotales = Math.floor(diffMs / (1000 * 60 * 60));
+            const horasRestantes = horasTotales % 24;
+            
+            document.getElementById('contadorTiempo').innerHTML = 
+                `⚡ ${años} años, ${meses} meses, ${diasTotales} días y ${horasRestantes} horas ⚡<br>
+                 <span style="font-size:0.7rem;">✨ Desde el 28 de junio de 2021 - "¡Estamos en el futuro!" ✨</span>`;
+        }
+        actualizarContador();
+        setInterval(actualizarContador, 3600000);
+
+        // MENSAJES PERSONALIZADOS PARA CADA FOTO
+        const mensajesPersonales = [
+            "❤️ Amo tus locuras ❤️",
+            "💕 Te amo infinitamente 💕",
+            "💖 La pandemia nunca fue un impedimento para verte 💖",
+            "💗 Amo tus besitos en mi cara 💗",
+            "💓 Me encanta ir a fiestas a tu lado 💓",
+            "💝 Las salidas al Six son las mejores 💝",
+            "💗 Siempre te acompañaré a donde sea 💗",
+            "💗 Las salidas al cine me encantan 💗",
+            "💗 Más salidas al Six y siempre a tu lado 💗",
+            "💗 Me encanta tomarnos fotos 💗",
+            "💗 Siempre me has dado detalles que me encantan (me gustan tus flores) 💗",
+            "💗 Solo tengo ojitos para ti 💗",
+            "💗 Llévame contigo de la manitaaa 💗",
+            "💗 Nuestra primera salida con mis papás: el acuario 💗",
+            "💗 El primer día que te conocí no sabes lo emocionada y nerviosa que estaba 💗",
+            "💗 Agárrame siempre de la mano, te amo 💗",
+            "💗 Frifayer x siempre, soy tu bot 💗",
+            "💗 Me encanta que estés en mis cumpleaños 💗",
+            "💗 Siempre me ibas a ver con mis abuelitos y te adoran, ahora eres un nieto más 💗",
+            "💗 Pero mira qué chulada baby, estás precioso 💗",
+            "💗 Más fotitos, obvio con filtros jajsjs 💗",
+            "💗 Más fotitos agarrados de la manita 💗",
+            "💗 Casi una de las fotos en donde me visitabas y estábamos afuera de casa de mis abuelitos 💗",
+            "💗 Más salidas, me encantan 💗",
+            "💗 Siempre encuentras la manera para hacerme sonreír 💗",
+            "💗 Abrázame siempre, no me sueltes plis 💗",
+            "💗 Nuestra época del cona 💗",
+            "💗 Espero seguir en más fiestas a tu lado baby 💗",
+            "💗 Me consientes con mis antojos de hamburguesas, gracias 💗",
+            "💗 Ya hace falta una salida al cineeee 💗",
+            "💗 Te sentenciaste a estar a mi lado jsjsjs 💗",
+            "💗 Qué sospechosos jaja, te amo mucho 💗",
+            "💗 Fui por primera vez al circo y sabes qué es lo mejor? Que fue a tu lado 💗",
+            "💖✨ FOTO ESPECIAL #34 - Ya estamos dando un paso más. Estoy muy orgullosa de ti, ya estás a nada de lograrlo, eres muy inteligente. ✨💖",
+            "💗 Gracias por tus detalles, en serio los valoro muchísimo, gracias 💗"
+        ];
+
+        // Nombres de archivos
+        const nombresArchivos = [];
+        for (let i = 1; i <= 35; i++) {
+            if (i === 5) nombresArchivos.push("foto5.jpeg");
+            else if (i === 16) nombresArchivos.push("foto16.JPEG");
+            else if (i === 17) nombresArchivos.push("foto17.PNG");
+            else if (i === 18) nombresArchivos.push("foto18.JPEG");
+            else nombresArchivos.push(`foto${i}.jpg`);
+        }
+
+        // Tamaños especiales
+        const tamanosEspeciales = [];
+        for (let i = 1; i <= 35; i++) {
+            if (i === 1 || i === 2 || i === 3) tamanosEspeciales.push("muy-grande");
+            else if (i === 21 || i === 26 || i === 31 || i === 33) tamanosEspeciales.push("grande");
+            else if (i === 34) tamanosEspeciales.push("importante");
+            else if (i === 7 || i === 13 || i === 23) tamanosEspeciales.push("vertical");
+            else if (i === 5 || i === 11 || i === 18) tamanosEspeciales.push("horizontal");
+            else tamanosEspeciales.push("");
+        }
+
+        const collageDiv = document.getElementById('collageGalaxia');
+
+        for (let i = 0; i < nombresArchivos.length; i++) {
+            const collageItem = document.createElement('div');
+            const tamano = tamanosEspeciales[i] || "";
+            collageItem.className = `collage-item ${tamano}`;
+            
+            const mensaje = mensajesPersonales[i];
+            const archivo = nombresArchivos[i];
+            const numFoto = i + 1;
+            
+            collageItem.innerHTML = `
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/${archivo}" alt="Recuerdo ${numFoto}" onerror="this.src='https://via.placeholder.com/500x400?text=⚡+Foto+${numFoto}+⚡'">
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="corazon-flip">⚡❤️⚡</div>
+                            <div class="mensaje-texto">"${mensaje}"</div>
+                            <div class="corazon-flip">🚗💕</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            const flipCard = collageItem.querySelector('.flip-card');
+            collageItem.addEventListener('click', function(e) {
+                flipCard.classList.toggle('volteado');
+                crearLluviaCorazones();
+            });
+            
+            collageDiv.appendChild(collageItem);
+        }
+
+        function crearLluviaCorazones() {
+            for(let i=0; i<10; i++) {
+                let heart = document.createElement('div');
+                heart.innerHTML = i % 2 === 0 ? '⚡' : '❤️';
+                heart.style.position = 'fixed';
+                heart.style.left = Math.random() * window.innerWidth + 'px';
+                heart.style.top = '-30px';
+                heart.style.fontSize = (Math.random() * 18 + 14) + 'px';
+                heart.style.opacity = '0.8';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '9999';
+                heart.style.transition = 'transform 2s linear, opacity 2s';
+                document.body.appendChild(heart);
+                setTimeout(() => {
+                    heart.style.transform = `translateY(${window.innerHeight + 50}px) rotate(20deg)`;
+                    heart.style.opacity = '0';
+                }, 10);
+                setTimeout(() => heart.remove(), 2100);
+            }
+        }
+
+        // BUZÓN
+        let cartasData = [
+            "⚡ Eres el motivo de mis sonrisas ⚡",
+            "🚀 Nuestro amor viaja más rápido que 88 millas por hora 🌌",
+            "💫 Contigo hasta el futuro 💫"
+        ];
+        const cartasContainer = document.getElementById('cartasContainer');
+        const buzonBtn = document.getElementById('buzonBtn');
+        
+        buzonBtn.addEventListener('click', () => {
+            if(cartasContainer.style.display === 'none' || cartasContainer.style.display === '') {
+                renderizarCartas();
+                cartasContainer.style.display = 'flex';
+            } else {
+                cartasContainer.style.display = 'none';
+            }
+        });
+        
+        function renderizarCartas() {
+            cartasContainer.innerHTML = '';
+            cartasData.forEach((texto, idx) => {
+                const cartaDiv = document.createElement('div');
+                cartaDiv.className = 'carta-item';
+                cartaDiv.innerHTML = `
+                    <div class="carta-titulo">💌 Carta del futuro #${idx+1}</div>
+                    <div class="carta-contenido" data-carta="${idx}">${texto}</div>
+                `;
+                const contenidoDiv = cartaDiv.querySelector('.carta-contenido');
+                contenidoDiv.addEventListener('dblclick', (e) => {
+                    const nuevo = prompt("Edita tu mensaje de amor:", cartasData[idx]);
+                    if(nuevo) { cartasData[idx] = nuevo; renderizarCartas(); }
+                });
+                cartasContainer.appendChild(cartaDiv);
+            });
+        }
+
+        // COFRES
+        const premiosCofres = [
+            { tipo: "beso", texto: "💋 Un beso  💋", icono: "⚡💋⚡" },
+            { tipo: "beso", texto: "💏 Un helado💏", icono: "💏⚡" },
+            { tipo: "beso", texto: "💖 Un video 💖", icono: "🕰️💖" },
+            { tipo: "salida", texto: "🎟️ Una salida a donde quieras🎟️", icono: "🚗🌴" },
+            { tipo: "foto", texto: "📸 Una foto  📸", icono: "📸⚡" },
+            { tipo: "nada", texto: "😅 Sin premio baby 😅", icono: "🍀" }
+        ];
+        
+        let cofresActuales = [];
+        let seleccionesRestantes = 3;
+        let juegoTerminado = false;
+        
+        function mezclarCofres() {
+            let copia = [...premiosCofres];
+            for (let i = copia.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copia[i], copia[j]] = [copia[j], copia[i]];
+            }
+            return copia.map((premio, idx) => ({ id: idx, abierto: false, premio: premio }));
+        }
+        
+        function revelarTodosLosCofres() {
+            cofresActuales.forEach(cofre => { if (!cofre.abierto) cofre.abierto = true; });
+        }
+        
+        function renderizarCofres() {
+            const grid = document.getElementById('cofresGrid');
+            grid.innerHTML = '';
+            cofresActuales.forEach(cofre => {
+                const cofreDiv = document.createElement('div');
+                cofreDiv.className = `cofre ${cofre.abierto ? 'abierto' : 'cerrado'}`;
+                let contenidoHtml = '';
+                if (cofre.abierto) {
+                    contenidoHtml = `
+                        <div class="cofre-icono">${cofre.premio.icono}</div>
+                        <div class="cofre-premio">${cofre.premio.texto}</div>
+                    `;
+                } else {
+                    contenidoHtml = `<div class="cofre-icono">🎁</div><div>🔒 Cofre temporal</div>`;
+                }
+                cofreDiv.innerHTML = contenidoHtml;
+                if (!cofre.abierto && !juegoTerminado && seleccionesRestantes > 0) {
+                    cofreDiv.addEventListener('click', () => abrirCofre(cofre.id));
+                }
+                grid.appendChild(cofreDiv);
+            });
+            document.getElementById('cofresInfo').innerHTML = juegoTerminado ? '⚡ Viaje completado ⚡' : `⚡ Te quedan ${seleccionesRestantes} selecciones ⚡`;
+        }
+        
+        function abrirCofre(id) {
+            if (juegoTerminado || seleccionesRestantes <= 0) return alert("Ya no puedes elegir más cofres.");
+            const cofre = cofresActuales.find(c => c.id === id);
+            if (cofre.abierto) return alert("Ya abriste este cofre.");
+            cofre.abierto = true;
+            seleccionesRestantes--;
+            const resultadoDiv = document.getElementById('resultadoCofres');
+            resultadoDiv.innerHTML = `<p style="background:rgba(0,0,0,0.6); padding:8px; border-radius:25px;">🎉 ¡Obtuviste: ${cofre.premio.texto}! 🎉</p>`;
+            alert(`🎁 ${cofre.premio.texto}`);
+            crearLluviaCorazones();
+            if (seleccionesRestantes === 0) {
+                juegoTerminado = true;
+                revelarTodosLosCofres();
+                renderizarCofres();
+                resultadoDiv.innerHTML += `<p style="margin-top:10px;">⚡ ¡Has completado tu viaje en el tiempo! ⚡</p>`;
+            } else {
+                renderizarCofres();
+            }
+        }
+        
+        function reiniciarCofres() {
+            cofresActuales = mezclarCofres();
+            seleccionesRestantes = 3;
+            juegoTerminado = false;
+            document.getElementById('resultadoCofres').innerHTML = '';
+            renderizarCofres();
+        }
+        
+        cofresActuales = mezclarCofres();
+        renderizarCofres();
+        document.getElementById('resetCofresBtn').addEventListener('click', reiniciarCofres);
+        
+        // MÚSICA
+        const musica = document.getElementById('musicaFondo');
+        const btnMusica = document.getElementById('controlMusica');
+        let musicaActiva = false;
+        btnMusica.addEventListener('click', () => {
+            if(!musicaActiva) {
+                musica.play().catch(e => console.log("autoplay bloqueado"));
+                btnMusica.innerHTML = '⚡ Pausar viaje sonoro ⚡';
+                musicaActiva = true;
+            } else {
+                musica.pause();
+                btnMusica.innerHTML = '⚡ 1.21 GIGAWATTS ⚡';
+                musicaActiva = false;
+            }
+        });
+        
+        document.getElementById('corazonAnimado').addEventListener('click', () => {
+            alert('⚡ ¡1.21 gigawatts de amor! ¡Viajamos al futuro juntos! ⚡');
+            crearLluviaCorazones();
+        });
+        
+        // JUEGO ATRAPA CORAZONES
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let juegoActivo = false;
+        let puntos = 0;
+        let tiempoRestante = 30;
+        let corazones = [];
+        let meteoros = [];
+        let animFrame;
+        let intervalTiempo;
+        let naveX = canvas.width/2;
+        const naveY = canvas.height - 50;
+        
+        canvas.width = 700;
+        canvas.height = 400;
+        
+        function dibujarNave() {
+            ctx.fillStyle = '#00ffff';
+            ctx.beginPath();
+            ctx.moveTo(naveX, naveY-15);
+            ctx.lineTo(naveX-18, naveY+8);
+            ctx.lineTo(naveX-6, naveY+3);
+            ctx.lineTo(naveX-6, naveY+12);
+            ctx.lineTo(naveX, naveY+6);
+            ctx.lineTo(naveX+6, naveY+12);
+            ctx.lineTo(naveX+6, naveY+3);
+            ctx.lineTo(naveX+18, naveY+8);
+            ctx.fill();
+            ctx.fillStyle = '#ff00ff';
+            ctx.beginPath();
+            ctx.arc(naveX, naveY-8, 7, 0, Math.PI*2);
+            ctx.fill();
+            ctx.fillStyle = 'white';
+            ctx.font = '12px monospace';
+            ctx.fillText('⚡', naveX-4, naveY-10);
+        }
+        
+        function spawnCorazon() { if(juegoActivo) corazones.push({ x: Math.random() * (canvas.width-30)+15, y: 8 }); }
+        function spawnMeteoro() { if(juegoActivo) meteoros.push({ x: Math.random() * (canvas.width-40)+20, y: 5 }); }
+        
+        function actualizarJuego() {
+            if(!juegoActivo) return;
+            for(let i=0; i<corazones.length; i++) { corazones[i].y += 3.5; if(corazones[i].y > canvas.height+30) { corazones.splice(i,1); i--; } }
+            for(let i=0; i<meteoros.length; i++) { meteoros[i].y += 3; if(meteoros[i].y > canvas.height+30) { meteoros.splice(i,1); i--; } }
+            for(let i=0; i<corazones.length; i++) { const c = corazones[i]; if(Math.hypot(naveX - c.x, naveY - c.y) < 24) { corazones.splice(i,1); puntos++; document.getElementById('puntos').innerText = puntos; crearLluviaCorazones(); i--; } }
+            for(let i=0; i<meteoros.length; i++) { const m = meteoros[i]; if(Math.hypot(naveX - m.x, naveY - m.y) < 26) { meteoros.splice(i,1); puntos = Math.max(0, puntos-2); document.getElementById('puntos').innerText = puntos; i--; } }
+            dibujarEscenario();
+        }
+        
+        function dibujarEscenario() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            const grad = ctx.createLinearGradient(0,0,0,canvas.height);
+            grad.addColorStop(0,'#0a0a2a'); grad.addColorStop(1,'#1a0a3a');
+            ctx.fillStyle = grad; ctx.fillRect(0,0,canvas.width,canvas.height);
+            for(let i=0;i<100;i++) {
+                ctx.fillStyle = `rgba(0,255,255,${Math.random()*0.5})`;
+                ctx.beginPath();
+                ctx.arc((i*131)%canvas.width, (i*57)%canvas.height, 1.2, 0, Math.PI*2);
+                ctx.fill();
+            }
+            corazones.forEach(c => {
+                ctx.fillStyle = '#ff3366';
+                ctx.beginPath();
+                ctx.arc(c.x, c.y, 9, 0, Math.PI*2);
+                ctx.fill();
+                ctx.fillStyle = 'white';
+                ctx.font = '13px sans-serif';
+                ctx.fillText('❤️', c.x-5, c.y+4);
+            });
+            meteoros.forEach(m => {
+                ctx.fillStyle = '#ff6600';
+                ctx.beginPath();
+                ctx.ellipse(m.x, m.y, 10, 8, 0, 0, Math.PI*2);
+                ctx.fill();
+                ctx.fillStyle = '#ffaa00';
+                ctx.fillText('💥', m.x-7, m.y+3);
+            });
+            dibujarNave();
+        }
+        
+        function moverNave(e) {
+            if(!juegoActivo) return;
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            let clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            if(e.touches) e.preventDefault();
+            let nuevoX = (clientX - rect.left) * scaleX;
+            naveX = Math.min(Math.max(nuevoX, 25), canvas.width-25);
+        }
+        
+        canvas.addEventListener('mousemove', moverNave);
+        canvas.addEventListener('touchmove', moverNave, {passive: false});
+        
+        function iniciarJuego() {
+            if(intervalTiempo) clearInterval(intervalTiempo);
+            if(animFrame) cancelAnimationFrame(animFrame);
+            juegoActivo = true; puntos = 0; tiempoRestante = 30; corazones = []; meteoros = [];
+            document.getElementById('puntos').innerText = '0'; document.getElementById('tiempo').innerText = '30'; document.getElementById('mensajeFinal').innerHTML = '';
+            naveX = canvas.width/2;
+            const intervalCorazones = setInterval(() => { if(juegoActivo) spawnCorazon(); }, 700);
+            const intervalMeteoros = setInterval(() => { if(juegoActivo) spawnMeteoro(); }, 1300);
+            intervalTiempo = setInterval(() => {
+                if(juegoActivo && tiempoRestante > 0) {
+                    tiempoRestante--;
+                    document.getElementById('tiempo').innerText = tiempoRestante;
+                    if(tiempoRestante <= 0) {
+                        juegoActivo = false;
+                        clearInterval(intervalCorazones); clearInterval(intervalMeteoros); clearInterval(intervalTiempo);
+                        document.getElementById('mensajeFinal').innerHTML = `⚡ ¡Juego terminado! Puntos: ${puntos} ⚡ <br> Te amo más allá del espacio-tiempo 💖`;
+                        cancelAnimationFrame(animFrame);
+                        dibujarEscenario();
+                    }
+                }
+            }, 1000);
+            function loop() { if(juegoActivo) actualizarJuego(); else dibujarEscenario(); animFrame = requestAnimationFrame(loop); }
+            loop();
+        }
+        
+        document.getElementById('iniciarJuego').addEventListener('click', () => { if(intervalTiempo) clearInterval(intervalTiempo); if(animFrame) cancelAnimationFrame(animFrame); iniciarJuego(); });
+        
+        dibujarEscenario();
+    </script>
+</body>
+</html>
